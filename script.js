@@ -34,6 +34,16 @@ const renderData = async () => {
   arr.forEach((item) => {
     if (new Date(item.endingDate).getTime() >= new Date().getTime()) {
       let row = tableBody.insertRow(0);
+
+      if (
+        new Date(item.startingDate).getTime() - 12 * 60 * 60 * 1000 <=
+        new Date(Date.now()).getTime()
+      ) {
+        row.classList = "current";
+      } else {
+        row.classList = "passive";
+      }
+
       let cell1 = row.insertCell(0);
       let cell2 = row.insertCell(1);
       let cell3 = row.insertCell(2);
@@ -43,7 +53,9 @@ const renderData = async () => {
       cell1.innerHTML =
         new Date(item.startingDate).getUTCDate() +
         " " +
-        monthNames[new Date(item.startingDate).getUTCMonth()];
+        monthNames[new Date(item.startingDate).getUTCMonth()] +
+        `   ${new Date(item.startingDate).toLocaleTimeString()}`;
+
       cell2.innerHTML = item.platform;
       cell3.innerHTML = item.name;
       cell4.innerHTML =

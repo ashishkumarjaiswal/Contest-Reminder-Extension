@@ -4,8 +4,8 @@
   margin: 0px;
   padding: 0;
   box-sizing: border-box;
-  color: white;
-  background-color: #232323;
+  /* color: white; */
+  /* background-color: #232323; */
   font-family: "Fira Code", monospace;
   font-size: 1rem;
 }
@@ -16,7 +16,6 @@
 }
 
 .table {
-  border: 2px solid black;
   border-collapse: collapse;
   text-align: center;
   width: 100%;
@@ -24,6 +23,7 @@
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .loading {
@@ -32,9 +32,14 @@ a {
 
 th,
 td {
-  border: 2px solid white;
+  border: 2px solid rgb(0 255 94);
   padding: 15px 5px;
 }
+
+/* th {
+  color: white;
+  background-color: #232323;
+} */
 
 .loader,
 .loader:after {
@@ -76,4 +81,19 @@ td {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.current {
+  background: rgb(210 0 0)  ;
+  /* display: none; */
+}
+
+.passive {
+  color: white;
+  background-color: #232323;
+}
+
+thead {
+  color: white;
+  background-color: #232323;
 }
