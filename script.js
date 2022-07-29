@@ -54,7 +54,13 @@ const renderData = async () => {
         new Date(item.startingDate).getUTCDate() +
         " " +
         monthNames[new Date(item.startingDate).getUTCMonth()] +
-        `   ${new Date(item.startingDate).toLocaleTimeString()}`;
+        `   ${
+          new Date(item.startingDate).getHours() > 12
+            ? new Date(item.startingDate).getHours() % 12
+            : new Date(item.startingDate).getHours()
+        }:${new Date(item.startingDate).getMinutes()} ${
+          new Date(item.startingDate).getHours() > 12 ? "PM" : "AM"
+        }  `;
 
       cell2.innerHTML = item.platform;
       cell3.innerHTML = item.name;
