@@ -44,23 +44,31 @@ const renderData = async () => {
         row.classList = "passive";
       }
 
+      // ${
+      //   new Date(item.startingDate).getHours() > 12
+      //     ? new Date(item.startingDate).getHours() % 12
+      //     : new Date(item.startingDate).getHours()
+      // }:${new Date(item.startingDate).getMinutes()} ${
+      //   new Date(item.startingDate).getHours() > 12 ? "PM" : "AM"
+      // }  `;
+
+      let time = new Date(item.startingDate)
+        .toLocaleTimeString("en-IT")
+        .split(":");
+
+      console.log(time);
+
       let cell1 = row.insertCell(0);
       let cell2 = row.insertCell(1);
       let cell3 = row.insertCell(2);
       let cell4 = row.insertCell(3);
       let cell5 = row.insertCell(4);
 
-      cell1.innerHTML =
+      cell1.innerHTML = `<div>  ${
         new Date(item.startingDate).getUTCDate() +
         " " +
-        monthNames[new Date(item.startingDate).getUTCMonth()] +
-        `   ${
-          new Date(item.startingDate).getHours() > 12
-            ? new Date(item.startingDate).getHours() % 12
-            : new Date(item.startingDate).getHours()
-        }:${new Date(item.startingDate).getMinutes()} ${
-          new Date(item.startingDate).getHours() > 12 ? "PM" : "AM"
-        }  `;
+        monthNames[new Date(item.startingDate).getUTCMonth()]
+      }  </div> <br> ${time[0]}:${time[1]} ${time[2].substring(3)} `;
 
       cell2.innerHTML = item.platform;
       cell3.innerHTML = item.name;
