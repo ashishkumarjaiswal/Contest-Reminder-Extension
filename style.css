@@ -43,6 +43,7 @@ thead {
   background-color: #232323;
 }
 
+/* Loading Animation */
 .loading {
   text-align: center;
   background-color: #232323;
@@ -54,6 +55,7 @@ thead {
   width: 80px;
   height: 80px;
 }
+
 .lds-ellipsis div {
   position: absolute;
   top: 33px;
@@ -102,4 +104,24 @@ thead {
   100% {
     transform: translate(24px, 0);
   }
+}
+
+/* Alert Animation */
+@keyframes color {
+  0% {
+    background: rgb(210 0 0);
+  }
+  50% {
+    background: #232323;
+  }
+  100% {
+    background: rgb(210 0 0);
+  }
+}
+
+.bg {
+  background: #33cccc; /* Fallback */
+  animation: color 3s infinite linear;
+  text-align: center;
+  padding: 2em;
 }

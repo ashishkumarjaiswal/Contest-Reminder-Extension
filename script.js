@@ -36,6 +36,10 @@ const renderData = async () => {
       let row = tableBody.insertRow(0);
 
       if (
+        new Date(item.startingDate).getTime() <= new Date(Date.now()).getTime()
+      ) {
+        row.classList = "bg";
+      } else if (
         new Date(item.startingDate).getTime() - 12 * 60 * 60 * 1000 <=
         new Date(Date.now()).getTime()
       ) {
@@ -44,19 +48,9 @@ const renderData = async () => {
         row.classList = "passive";
       }
 
-      // ${
-      //   new Date(item.startingDate).getHours() > 12
-      //     ? new Date(item.startingDate).getHours() % 12
-      //     : new Date(item.startingDate).getHours()
-      // }:${new Date(item.startingDate).getMinutes()} ${
-      //   new Date(item.startingDate).getHours() > 12 ? "PM" : "AM"
-      // }  `;
-
       let time = new Date(item.startingDate)
         .toLocaleTimeString("en-IT")
         .split(":");
-
-      console.log(time);
 
       let cell1 = row.insertCell(0);
       let cell2 = row.insertCell(1);
