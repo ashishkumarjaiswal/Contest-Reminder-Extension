@@ -1,7 +1,7 @@
 const getContestData = async () => {
   try {
     const data = await fetch(
-      "https://contest-reminder-backend.herokuapp.com/getcontestdata"
+      "https://contest-backend-1pnqlunz0-ashishkumarjaiswal.vercel.app/getcontestdata"
     );
 
     const json = await data.json();
@@ -30,6 +30,13 @@ const monthNames = [
 const renderData = async () => {
   const arr = await getContestData();
   const tableBody = document.getElementById("tableBody");
+  let res = await fetch(
+    "https://api.countapi.xyz/update/contest/extension/?amount=1"
+  );
+
+  const json = await res.json();
+
+  console.log(json);
 
   arr.forEach((item) => {
     if (new Date(item.endingDate).getTime() >= new Date().getTime()) {
